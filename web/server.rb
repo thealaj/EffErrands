@@ -10,7 +10,6 @@ class EffErrands::Server < Sinatra::Application
   Dotenv.load
 
   get '/' do
-    binding.pry
     #home page
     @@user_items = []
     @@start_location = []

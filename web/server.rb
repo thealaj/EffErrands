@@ -9,12 +9,10 @@ class EffErrands::Server < Sinatra::Application
   set :bind, "0.0.0.0"
   Dotenv.load
 
-
   get '/' do
     #home page
     @@user_items = []
     @@start_location = []
-    @@end_location = []
     erb :index
   end
 
@@ -43,26 +41,10 @@ class EffErrands::Server < Sinatra::Application
       @@user_items << [params['dest_name'], params['dest_address']] 
     end
 
-    #if end_home checkbox is checked, add start location as end location
-    if params['end_home'] == 1
-      @@end_location = [params['start_name'], params['start_address']]
-
-    #if there is information entered in just one field, create error
-    #end_name, end_address
-    #end_home is the checkbox
-    elsif (!params['end_name'].nil? && params['end_address'].nil?) || (params['end_name'].nil? && !params['end_address'].nil?)
-      @error = 'Please add an ending location with name and address.'
-
-    #if both fields are filled out, set end location
-    elsif !params['end_name'].nil? && !params['end_address'].nil?
-        @@end_location = [params['end_name'], params['end_address']]
-    end
-
     start_dest = @@start_location
-    end_dest = @@end_location
     dests = @@user_items
 
-    erb :index, :locals => {start_dest: start_dest, end_dest: end_dest, dests: dests}
+    erb :index, :locals => {start_dest: start_dest, dests: dests}
   end
 
   post '/route' do
@@ -71,7 +53,7 @@ class EffErrands::Server < Sinatra::Application
     #@@end_location = ['MakerSquare Brazos', '800 Brazos St, Austin, TX']
 
     #create address hash
-    @@address = {:endpoint => false}
+    @@address = {}
 
     #create array for origins key
     @@address[:origins] = @@user_items.map {|x| x.last.gsub(/,/, '').gsub(/\s/, '+')}
@@ -79,18 +61,13 @@ class EffErrands::Server < Sinatra::Application
 
     #create array for destinations key
     @@address[:destinations] = @@user_items.map {|x| x.last.gsub(/,/, '').gsub(/\s/, '+')}
-
-    if !@@end_location.empty?
-      @@address[:destinations].push(@@end_location.last.gsub(/,/, '').gsub(/\s/, '+'))
-      @@address[:endpoint] = true
-    end
+    @@address[:destinations].push(@@start_location.last.gsub(/,/, '').gsub(/\s/, '+'))
 
     start_dest = @@start_location
-    end_dest = @@end_location
     dests = @@user_items
     addresses = @@address    
 
-    erb :route, :locals => {start_dest: start_dest, end_dest: end_dest, dests: dests, addresses: addresses}
+    erb :route, :locals => {start_dest: start_dest, dests: dests, addresses: addresses}
 
   end
   #@@addresses = {:endpoint=>true, :origins=>["1803+E+18th+Street+Austin+TX", "2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751"], :destinations=>["2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751", "800+Brazos+St+Austin+TX"]}

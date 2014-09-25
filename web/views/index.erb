@@ -2,35 +2,37 @@
 	<div class="sidebar large-4 columns">
 		<p>Helvetica fixie post-ironic semiotics, Pinterest cred Vice hella quinoa Shoreditch High Life kitsch wolf tofu Tonx. Kogi Godard biodiesel, 3 wolf moon cardigan typewriter Brooklyn ennui chillwave forage jean shorts hoodie fap XOXO. Quinoa tousled plaid, kogi cornhole ennui Wes Anderson chia typewriter. Cosby sweater kogi heirloom, messenger bag Brooklyn organic XOXO gentrify Marfa wolf Etsy vinyl Williamsburg. Literally chambray ugh raw denim banjo fixie. Craft beer Cosby sweater jean shorts, literally meggings butcher PBR readymade gentrify fanny pack mumblecore. 
 		</p>
-		<button class="find_route" a href="/drive-route">Find my efficient route</button>  
+		<button class="find_route" a href="/route">Find my efficient route</button>  
 	</div>
-	<div class="large-8 columns">
-		<form action="/drive-items" method="post">
+	<div class="route_form large-8 columns">
+		<form action="/add-items" method="post">
 		<fieldset>
-		<legend>Find my driving route</legend>
+		<legend>Find my route</legend>
 
-
+<div class="row">
+	<div class="large-4 columns">
+	<label for="travel_mode">Run errands by:
+	<select name="travel_mode">
+	<option value="true">Car</option>
+	<option value="false">Foot</option>
+	</select>
+</div>
+</div>
 
 <div class="row">
 	<div class="large-4 columns">
 		<label for="start_name">Start location 
 		<input name="start_name" type="text"> 
 		</label>
-		</div>
-		<div class="large-4 columns">
-		<label for="start_name">Start address
-		<input name="start_name" type="text"> 
+		<label for="start_address">Start address
+		<input name="start_address" type="text"> 
 		</label>
-	</div>
 </div>
 <div class="row">
-	<div class="small-4 columns">
+	<div class="large-4 columns">
 		<label for="dest_name">Errand name
 		<input name="dest_name" type="text"> 
 		</label>
-	</div>
-	
-	<div class="small-4 columns">	
 		<label for="dest_address">Errand address
 		<input name="dest_address" type="text"> 
 		</label>
@@ -38,15 +40,25 @@
 </div>
 
 <div class="row">
-	<div class="large-8 columns">
+	<div class="end_loc large-8 columns">
 	<input id="end_home" type="checkbox"><label for="end_home">End at starting location</label>
-		<input id="set_end" type="checkbox"><label for="set_end">Set an end destination</label>
-    </div>
+	
+	<!-- <button class="button tiny">Set an end destination</button> -->
+
+<!-- 		<div id="end_collapse" style="display:none">
+ -->		<label for='end_name'>End name
+		<input name='end_name' type='text'>
+		</label>
+		<label for='end_location'>End location
+		<input name='end_location' type='text'>
+		</label>
+<!-- 		</div>
+ -->    </div>
 </div>
 	
 <div class="row">
 	<div class="large-8 columns">
-		<button class="add">Add my errand!</button>
+		<button class="add small">Add my errand!</button>
 	</fieldset>
 		</form>
 	</div>
@@ -56,7 +68,6 @@
 
 
 </div>
-
 
 
 

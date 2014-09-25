@@ -1,7 +1,40 @@
 .sidebar {
   float: right;
+  background-color: #f1f1f1;
 }
 
 h1 {
-  color: red;
+  color: #FF5800;
+  font-size: 50px;
 }
+
+.header {
+  width: 100%;
+  background-color: #f1f1f1;
+  margin: 10px;
+}
+
+ .new {
+  float: right;
+  font-size: 25px;
+  padding: 20px;
+ }
+
+/* body {
+  background: url('https://unsplash.imgix.net/41/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3.jpg?q=75&fm=jpg&auto=format&s=37706eb444a95d18c639bd2973b304b4') no-repeat;*/
+
+.main_container {
+  background-color: #f1f1f1;
+}
+
+.switch {
+  color: blue;
+}
+
+ .add {
+  float: right;
+ }
+
+ .route_form {
+  float: right;
+ }

@@ -1,13 +1,26 @@
 <div class="row">
 	<div class="sidebar large-4 columns">
-		<p>Helvetica fixie post-ironic semiotics, Pinterest cred Vice hella quinoa Shoreditch High Life kitsch wolf tofu Tonx. Kogi Godard biodiesel, 3 wolf moon cardigan typewriter Brooklyn ennui chillwave forage jean shorts hoodie fap XOXO. Quinoa tousled plaid, kogi cornhole ennui Wes Anderson chia typewriter. Cosby sweater kogi heirloom, messenger bag Brooklyn organic XOXO gentrify Marfa wolf Etsy vinyl Williamsburg. Literally chambray ugh raw denim banjo fixie. Craft beer Cosby sweater jean shorts, literally meggings butcher PBR readymade gentrify fanny pack mumblecore. 
-		</p>
-		<button class="find_route" a href="/drive-route">Find my efficient route</button>  
+		
+		<button class="find_route" a href="/drive-route">Find my route</button> 
+		<% @@user_items.each do |array| %>
+		<%= "#{array.first}" %>
+		<%= "#{array.last}" %>
+		<% end %>
 	</div>
+
+
+
+
+
+
+
+
+
+###Input form	
 	<div class="route_form large-8 columns">
 		<form action="/drive-items" method="post">
 		<fieldset>
-		<legend>Find my route</legend>
+		<legend>Errands done efficiently</legend>
 
 <div class="row">
 	<div class="large-4 columns">

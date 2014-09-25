@@ -8,10 +8,6 @@ class EffErrands::Server < Sinatra::Application
 
   set :bind, "0.0.0.0"
   Dotenv.load
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e0b03d372cafd81b2184b66e25760c91139a117
 
   get '/' do
     #home page

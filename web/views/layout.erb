@@ -1,11 +1,32 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>EffErrands</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/main.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.css">
 </head>
 <body>
-	<h1>EffErrands</h1>
 
+<div class="row header">
+	<div class="large-6 columns">
+		<h1><a href="/">Eff Errands</a></h1>
+	</div>
+	<div class="large-6 columns">
+		<ul class="travel_mode">
+  			<li><a href="/walking" class="walk">New errand route</a></li>	
+		</div>
+	</div>
+<div class="main_container">
+<div class="row">
+	<div class="large-4 columns">
+	<h3 class="tagline"><em>Errands done efficiently</em></h3> 
+  	</div> 
+ </div>
+  	<%= yield %>
+  </div> 
 </body>
 </html>
+
+
+

@@ -95,7 +95,7 @@ class EffErrands::Server < Sinatra::Application
   end
   #@@addresses = {:endpoint=>true, :origins=>["1803+E+18th+Street+Austin+TX", "2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751"], :destinations=>["2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751", "800+Brazos+St+Austin+TX"]}
  
-
+  # USING BEN'S ALGORITHM:
   get '/api_request' do
     en_url = URI.encode('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + @@address[:origins].join("|") + '&destinations='+ @@address[:destinations].join("|") + '&units=imperial&key=' + ENV['GOOGLE_MAPS_KEY'])
     response = Unirest.get (en_url)
@@ -118,6 +118,13 @@ class EffErrands::Server < Sinatra::Application
       i += 1
     end
 
+  end
+
+  #USING GOOGLE'S SHITTY ALGORITHM:
+  get '/api_request_waypoints' do
+    url = URI.encode('https://maps.googleapis.com/maps/api/directions/json?origin=' + @@address[:origins].first + '&destination=' + @@address[:destinations].last + '&waypoints=opitimization:true' + @@address[:origins][1..-2].join("|") + '&key=' + ENV['GOOGLE_MAPS_KEY'])
+    ordered_response = Unirest.get (url)
+    data = ordered_response.body
   end
 
 

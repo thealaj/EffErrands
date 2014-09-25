@@ -9,6 +9,7 @@ class EffErrands::Server < Sinatra::Application
   set :bind, "0.0.0.0"
   Dotenv.load
 
+
   get '/' do
     #home page
     @@user_items = []

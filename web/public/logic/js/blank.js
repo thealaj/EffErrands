@@ -1,9 +1,22 @@
-$('#set_end').on("click", function(){
+$('.tiny').on("click", function(){
 
+$('#end_collapse').toggle();
 
-<label for="end_name">End location
-		<input name="end_name" type="text"> 
-     	</label>
-})
+});
+
+// $('.tiny').on("click", function(){
+
+// var collapse_content_select = $(this).attr('href');
+
+// var collapser = $(this);
+// $(collapse_content_select).toggle(function(){
+// 	if $(this).css('display') =='none'){
+// 		collapser.html('show');	
+// 	} else {
+// 		collapser.html('hide');
+// 	}
+// })
+
+// });
 
 

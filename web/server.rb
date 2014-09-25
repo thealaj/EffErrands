@@ -23,23 +23,23 @@ class EffErrands::Server < Sinatra::Application
     @error = ''
 
     #check if start name or start address is empty and has not already been entered
-    if (params['start_name'].nil? || params['start_address'].nil?) && @@start_location == []
+    if (params['start_name'].empty? || params['start_address'].empty?) && @@start_location.empty?
       @error = 'Please add a starting location with name and address.'
 
     #check if either dest name or address is empty
-    elsif params['dest_name'].nil? || params['dest_address'].nil?
+    elsif params['dest_name'].empty? || params['dest_address'].empty?
       @error = 'Please add a destination with name and address.'
 
     #if start location has not been changed and new destination has been added
-    elsif params['start_name'].nil? && params['start_address'].nil?
+    elsif params['start_name'].empty? && params['start_address'].empty?
       #add each item one at a time
-      @@user_items << [params['dest_name'], params['dest_address']] 
+      @@user_items << [params['dest_name'], params['dest_address']] # 'Target', '2300 W Ben White Blvd, Austin, TX'
 
     #if start location has been updated and new destination has been added  
     else
       @@start_location = [params['start_name'], params['start_address']]
       #add each item one at a time
-      @@user_items << [params['dest_name'], params['dest_address']] 
+      @@user_items << [params['dest_name'], params['dest_address']] # 'Target', '2300 W Ben White Blvd, Austin, TX'
     end
 
     #if end_home checkbox is checked, add start location as end location
@@ -47,23 +47,18 @@ class EffErrands::Server < Sinatra::Application
       @@end_location = [params['start_name'], params['start_address']]
 
     #if there is information entered in just one field, create error
-    elsif (!params['end_name'].nil? && params['end_address'].nil?) || (params['end_name'].nil? && !params['end_address'].nil?)
+    elsif (!params['end_name'].empty? && params['end_address'].empty?) || (params['end_name'].empty? && !params['end_address'].empty?)
       @error = 'Please add an ending location with name and address.'
 
     #if both fields are filled out, set end location
-    elsif !params['end_name'].nil? && !params['end_address'].nil?
+    elsif !params['end_name'].empty? && !params['end_address'].empty?
         @@end_location = [params['end_name'], params['end_address']]
     end
 
     #end_name, end_address
     #end_home is the checkbox
 
-    start_dest = @@start_location
-    end_dest = @@end_location
-    dests = @@user_items
-
-
-    erb :route, :locals => {start_dest: start_dest, end_dest: end_dest, dests: dests}
+    erb :index
   end
 
   post '/route' do
@@ -87,7 +82,6 @@ class EffErrands::Server < Sinatra::Application
     end
 
   end
-  #@@addresses = {:endpoint=>true, :origins=>["1803+E+18th+Street+Austin+TX", "2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751"], :destinations=>["2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751", "800+Brazos+St+Austin+TX"]}
 
   get '/api_request' do
     en_url = URI.encode('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + @@address[:origins].join("|") + '&destinations='+ @@address[:destinations].join("|") + '&units=imperial&key=' + ENV['GOOGLE_MAPS_KEY'])

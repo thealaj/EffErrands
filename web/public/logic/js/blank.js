@@ -1,8 +1,3 @@
-$('.tiny').on("click", function(){
-
-$('#end_collapse').toggle();
-
-});
 
 // $('.tiny').on("click", function(){
 
@@ -20,3 +15,4 @@ $('#end_collapse').toggle();
 // });
 
 
+when hidden:disabled remove from page

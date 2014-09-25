@@ -11,7 +11,6 @@ class EffErrands::Server < Sinatra::Application
     #home page
     @@user_items = []
     @@start_location = []
-    @@end_location = []
     erb :index
   end
 
@@ -21,15 +20,15 @@ class EffErrands::Server < Sinatra::Application
     @error = ''
 
     #check if start name or start address is empty and has not already been entered
-    if (params['start_name'].empty? || params['start_address'].empty?) && @@start_location.empty?
+    if (params['start_name'].nil? || params['start_address'].nil?) && @@start_location.nil?
       @error = 'Please add a starting location with name and address.'
 
     #check if either dest name or address is empty
-    elsif params['dest_name'].empty? || params['dest_address'].empty?
+    elsif params['dest_name'].nil? || params['dest_address'].nil?
       @error = 'Please add a destination with name and address.'
 
     #if start location has not been changed and new destination has been added
-    elsif params['start_name'].empty? && params['start_address'].empty?
+    elsif params['start_name'].nil? && params['start_address'].nil?
       #add each item one at a time
       @@user_items << [params['dest_name'], params['dest_address']] # 'Target', '2300 W Ben White Blvd, Austin, TX'
 
@@ -45,11 +44,11 @@ class EffErrands::Server < Sinatra::Application
       @@end_location = [params['start_name'], params['start_address']]
 
     #if there is information entered in just one field, create error
-    elsif (!params['end_name'].empty? && params['end_address'].empty?) || (params['end_name'].empty? && !params['end_address'].empty?)
+    elsif (!params['end_name'].nil? && params['end_address'].nil?) || (params['end_name'].nil? && !params['end_address'].nil?)
       @error = 'Please add an ending location with name and address.'
 
     #if both fields are filled out, set end location
-    elsif !params['end_name'].empty? && !params['end_address'].empty?
+    elsif !params['end_name'].nil? && !params['end_address'].nil?
         @@end_location = [params['end_name'], params['end_address']]
     end
 

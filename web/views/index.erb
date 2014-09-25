@@ -1,82 +1,56 @@
 <div class="row">
-	<div class="sidebar large-4 columns">
-		
-		<button class="find_route" a href="/drive-route">Find my route</button> 
-		<% @@user_items.each do |array| %>
-		<%= "#{array.first}" %>
-		<%= "#{array.last}" %>
-		<% end %>
-	</div>
-
-
-
-
-
-
-
-
-
-###Input form	
+	
 	<div class="route_form large-8 columns">
-		<form action="/drive-items" method="post">
+		<form action="/add-items" method="post">
 		<fieldset>
 		<legend>Errands done efficiently</legend>
 
-<div class="row">
-	<div class="large-4 columns">
-	<label for="travel_mode">Run errands by:
-	<select name="travel_mode">
-	<option value="true">Car</option>
-	<option value="false">Foot</option>
-	</select>
-</div>
-</div>
+		<div class="row">
+			<div class="large-4 columns">
+			<label for="travel_mode">Run errands by:
+			<select name="travel_mode">
+			<option value="true">Car</option>
+			<option value="false">Foot</option>
+			</select>
+			</div>
+		</div>
 
-<div class="row">
-	<div class="large-4 columns">
-		<label for="start_name">Start location 
-		<input name="start_name" type="text"> 
-		</label>
-		<label for="start_address">Start address
-		<input name="start_address" type="text"> 
-		</label>
-</div>
-<div class="row">
-	<div class="large-4 columns">
-		<label for="dest_name">Errand name
-		<input name="dest_name" type="text"> 
-		</label>
-		<label for="dest_address">Errand address
-		<input name="dest_address" type="text"> 
-		</label>
+		<div class="row">
+			<div class="start large-4 columns">
+				<label for="start_name">Start location 
+				<input name="start_name" type="text"> 
+				</label>
+				<label for="start_address">Start address
+				<input name="start_address" type="text"> 
+				</label>
+			</div>
+			<div class="errand large-4 columns" hidden>
+				<label for="dest_name">Errand name
+				<input name="dest_name" type="text"> 
+				</label>
+				<label for="dest_address">Errand address
+				<input name="dest_address" type="text"> 
+				</label>
+			</div>
+		</div>
+
+
+		
+	<div class="row">
+		<div class="large-8 columns">
+			<button class="add small">Add my errand!</button>
+		</fieldset>
+			</form>
+		</div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="end_loc large-8 columns">
-	<input id="end_home" type="checkbox"><label for="end_home">End at starting location</label>
-	
-	<!-- <button class="button tiny">Set an end destination</button> -->
+<div class="sidebar large-4 columns">
+	<h4>To-dos</h4>
+		
 
-<!-- 		<div id="end_collapse" style="display:none">
- -->		<label for='end_name'>End name
-		<input name='end_name' type='text'>
-		</label>
-		<label for='end_location'>End location
-		<input name='end_location' type='text'>
-		</label>
-<!-- 		</div>
- -->    </div>
-</div>
-	
-<div class="row">
-	<div class="large-8 columns">
-		<button class="add small">Add my errand!</button>
-	</fieldset>
-		</form>
+		<button class="find_route" a href="/drive-route">Find my route</button> 
+
 	</div>
-</div>
-
 
 
 

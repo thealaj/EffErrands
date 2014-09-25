@@ -1,5 +1,4 @@
 .sidebar {
-  float: right;
   background-color: #f1f1f1;
 }
 
@@ -27,14 +26,10 @@ h1 {
   background-color: #f1f1f1;
 }
 
-.switch {
-  color: blue;
-}
 
- .add {
-  float: right;
- }
+
+
 
  .route_form {
-  float: right;
+  float: left;
  }

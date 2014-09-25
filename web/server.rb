@@ -1,12 +1,16 @@
 require_relative '../lib/efferrands.rb'
 require 'sinatra'
 require 'pry-byebug'
+require 'unirest'
+require 'dotenv'
 
 class EffErrands::Server < Sinatra::Application
 
   set :bind, "0.0.0.0"
+  Dotenv.load
 
   get '/' do
+    binding.pry
     #home page
     @@user_items = []
     @@start_location = []
@@ -80,7 +84,32 @@ class EffErrands::Server < Sinatra::Application
 
   end
 
+  get '/api_request' do
+    en_url = URI.encode('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + @@address[:origins].join("|") + '&destinations='+ @@address[:destinations].join("|") + '&units=imperial&key=' + ENV['GOOGLE_MAPS_KEY'])
+    response = Unirest.get (en_url)
+    data = response.body
+    algo_data = []
+    i = 0
+    while i < data['origin_addresses'].length
+      org_ary = []
+      j = 0
+      while j < data['destination_addresses'].length
+        dest_ary = []
+        dest_ary << data['destination_addresses'][j]
+        dest_ary << data['rows'][i]['elements'][j]['distance']['value']
+        org_ary << dest_ary
+        j += 1
+      end
+      org_hash = {}
+      org_hash[data['origin_addresses'][i]] = org_ary
+      algo_data << org_hash
+      i += 1
+    end
+
+  end
+
 
   run! if __FILE__ == $0
 end
+
 

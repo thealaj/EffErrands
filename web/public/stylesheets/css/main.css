@@ -3,5 +3,22 @@
 }
 
 h1 {
-  color: red;
+  color: #FF5800;
+  font-size: 50px;
 }
+
+.header {
+  width: 100%;
+  background-color: #f1f1f1;
+  margin: 10px;
+}
+
+ .new {
+  float: right;
+  font-size: 25px;
+  padding: 20px;
+ }
+
+ .container {
+  background:;
+ }

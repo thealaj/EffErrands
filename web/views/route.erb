@@ -8,7 +8,12 @@
 			<% points.each do |k, v| %>
 				<% location = v.split(':')%>
 				<% new_loc = regex.match(location.first)[1] %>
-				<li><%= "#{k}. " + names[k-1].split(' ').map(&:capitalize).join(' ') + '- ' + new_loc %></li>
+				<li class="accordion_down"><%= "#{k}. " + names[k-1].split(' ').map(&:capitalize).join(' ') + '- ' + new_loc %></li>
+				<ol  class="accordion_up">
+				<% directions[k-1].each do |step| %>
+				<li><%= step %></li>
+				<% end %>
+				</ol>
 				<ul>
 					<li><em><%= location.last%></em> <%=" to next destination"%> </li>
 				</ul>

@@ -41,7 +41,6 @@ class EffErrands::Server < Sinatra::Application
 
     start_dest = @@start_location
     dests = @@user_items
-    binding.pry
 
     erb :index, :locals => {start_dest: start_dest, dests: dests}
   end

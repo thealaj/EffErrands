@@ -1,13 +1,17 @@
 <!-- @route =  { 0 => [Address1-Address2, distance], 1=> [Address2-Address3, distance]}-->
+<div class="row">
+	<div class="large-6 columns">
+		<h3>Efficient route</h3>
+		<h4>Start</h4>
+		<p> <%=  start_dest.first + ', ' %> <em><%= start_dest.last %></em> </p>
 
+		<ul>
+			<% dests.each do |d| %>
+			<li><%= d.first + ', ' %> <em><%= d.last %></em></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="large-6 columns">
+	</div>
+</div>
 
-<p> <%= 'Start: ' + start_dest.first + ', ' + start_dest.last %> </p>
-<ul>
-	<% dests.each do |d| %>
-		<li><%= d.first + ', ' + d.last %><br /></li>
-	<% end %>
-</ul>
-
-<% if end_dest != [] %>
-	<p> <%= 'End: ' + end_dest.first + ', ' + end_dest.last %> </p>
-<% end %>

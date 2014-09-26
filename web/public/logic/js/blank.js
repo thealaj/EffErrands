@@ -72,6 +72,47 @@
 
  		});
 
+	// $(function(){
+	// 	$('.accordion_up').click(function(){
+	// 		$(this).slideUp("slow", function(){
+
+	// 		});
+	// 	});
+			
+	// });
+
+	// $(function(){
+	// 	$('.accordion_down').click(function(){
+	// 		$($(this).next()).slideDown("slow", function(){
+
+	// 		});
+	// 	});
+			
+	// });
+	
+	$($('.accordion_down').next()).hide();
+
+	
+	$(function(){
+		$('.accordion_down').click(function(){
+			$($(this).next()).slideToggle("slow", function(){
+
+			});
+		});
+			
+	});
+
+
+
+	// 	$(function(){
+	// 	$('.accordion').click(function(){
+	// 		$(this).slideDown("slow", function(){
+
+	// 		});
+	// 	});
+			
+	// });
+	// });
  	// $('.find_route').on('click', function() {
  	// 	if ($('#dest_name').val().length==0 && $('#dest_address').val().length==0) {
  	// 		$('.error.dest_name').show();

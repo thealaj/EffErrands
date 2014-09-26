@@ -116,9 +116,13 @@ class EffErrands::Server < Sinatra::Application
     # Creates some containers for the data:
     points_hash = {}
     each_stop = []
+    all_legs = []
     # Adds all of the addresses into an array in the order sorted by Google:
     data['routes'].first['legs'].each_index do |i|
       each_stop << "#{data['routes'].first['legs'][i]['start_address']}: #{data['routes'].first['legs'][i]['distance']['text']}"
+      sub_leg = []
+      data['routes'].first['legs'][i]['steps'].each { |x| sub_leg << x['html_instructions']}
+      all_legs << sub_leg
     end
     ## Adds the start point back to the end of the array:
     # each_stop.push(data['routes'].first['legs'].first['start_address'])
@@ -141,7 +145,7 @@ class EffErrands::Server < Sinatra::Application
 
     names.unshift(start_dest.first)
 
-    erb :route, :locals => {start_dest: start_dest, points: points_hash, names: names}
+    erb :route, :locals => {start_dest: start_dest, points: points_hash, names: names, directions: all_legs}
 
   end
 

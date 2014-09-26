@@ -31,11 +31,12 @@
 					 
 						<div class="start large-8 columns">
 							<label for="start_name">Start/end location 
-								<input name="start_name" type="text" class="error" />
-								<small class="error">Invalid entry</small> 
+								<input name="start_name" type="text" id="start_name" class="error" >
+								<small class="error start_name" style="display:none">Please name your start and end location. Ex: "home".</small> 
 							</label>
 							<label for="start_address">Address
-								<input name="start_address" type="text"> 
+								<input name="start_address" id="start_address" type="text" class="error"> 
+								<small class="error start_address" style="display: none">Please enter a valid address.</small> 
 							</label>
 						</div>
 					</div>
@@ -50,10 +51,12 @@
 					<div class="row">
 						<div class="errand large-8 columns">
 							<label for="dest_name">Errand name
-								<input name="dest_name" type="text"> 
+								<input name="dest_name" id="dest_name" type="text" class="error"> 
+								<small class="error dest_name" style="display: none">Please name your errand. Ex: "Sunrise MiniMart".</small> 
 							</label>
 							<label for="dest_address">Errand address
-								<input name="dest_address" type="text"> 
+								<input name="dest_address" id="dest_address" type="text" class="error"> 
+								<small class="error dest_address" style="display: none">Please enter a valid address.</small> 
 							</label>
 
 						</div>

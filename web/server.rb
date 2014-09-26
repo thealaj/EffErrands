@@ -60,16 +60,11 @@ class EffErrands::Server < Sinatra::Application
 
     #create array for destinations key
     @@address[:destinations] = @@user_items.map {|x| x.last.gsub(/,/, '').gsub(/\s/, '+')}
-    @@address[:destinations].push(@@start_location.last.gsub(/,/, '').gsub(/\s/, '+'))
+    @@address[:destinations].push(@@start_location.last.gsub(/,/, '').gsub(/\s/, '+'))  
 
-    start_dest = @@start_location
-    dests = @@user_items
-    addresses = @@address    
-
-    erb :route, :locals => {start_dest: start_dest, dests: dests, addresses: addresses}
-
+    reditect '/api_request'
   end
-  #@@addresses = {:endpoint=>true, :origins=>["1803+E+18th+Street+Austin+TX", "2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751"], :destinations=>["2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751", "800+Brazos+St+Austin+TX"]}
+  #@@address = {:origins=>["1803+E+18th+Street+Austin+TX", "2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751"], :destinations=>["2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751", "1803+E+18th+Street+Austin+TX"]}
  
 
   get '/api_request' do
@@ -93,6 +88,12 @@ class EffErrands::Server < Sinatra::Application
       algo_data << org_hash
       i += 1
     end
+
+    start_dest = @@start_location
+    dests = @@user_items
+    addresses = @@address  
+
+    erb :route, :locals => {start_dest: start_dest, dests: dests, addresses: addresses}
 
   end
 

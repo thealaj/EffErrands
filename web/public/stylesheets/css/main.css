@@ -47,3 +47,18 @@ h1 {
 }
 
 
+#walk + label {
+  top: -40px;
+  left: -20px;
+}
+
+#drive + label {
+  right: 40px;
+}
+
+
+
+
+
+
+

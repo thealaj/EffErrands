@@ -102,7 +102,7 @@ class EffErrands::Server < Sinatra::Application
   end
 
   #USING GOOGLE'S SHITTY ALGORITHM:
-  data['routes'].first['legs'].first['steps'].first['html_instructions']
+  #data['routes'].first['legs'].first['steps'].first['html_instructions']
   get '/api_request_waypoints' do
     # Make API call to google maps: 
     new_url = URI.encode('https://maps.googleapis.com/maps/api/directions/json?origin=' + @@address[:origins].first + '&destination=' + @@address[:origins].first + '&waypoints=optimize:true|' + @@address[:origins][1..-1].join("|") + '&key=' + ENV['GOOGLE_MAPS_KEY'])

@@ -8,7 +8,7 @@
 				<div class="row">
 					<div class="large-8 columns">
 
-						<div class="travel switch small">
+						<div class="travel switch round large">
 						<input id="drive" name="travel_mode" type="radio" checked>
 							<label for="drive" onclick="">Travel by car</label>
 
@@ -28,9 +28,11 @@
 					<% if !defined?(start_dest) %>
 					<form action="/add-items" method="post">
 					<div class="row">
+					 
 						<div class="start large-8 columns">
-							<label for="start_name">Start/end location 
-								<input name="start_name" type="text"> 
+							<label for="start_name error">Start/end location 
+								<input name="start_name" type="text">
+								<small class="error">Invalid entry</small> 
 							</label>
 							<label for="start_address">Address
 								<input name="start_address" type="text"> 
@@ -80,12 +82,9 @@
 				<p><strong><%= "#{array.first}"%><strong><br />
 					<em><%= "#{array.last}" %></em></p>
 						<% end %> 
-				
 				<% end %>
 			<button class="find_route" a href="/route">Find my route!</button> 
-						
-
-					</div>
+</div>
 
 
 

@@ -1,10 +1,19 @@
 .sidebar {
-  padding-top: 20px;
+  float: right;
+ margin-top: 26px;
+ background-color:  rgba(255, 88, 0, 0.15);
+ text-align: center;
+  /*background: url('https://unsplash.imgix.net/41/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3.jpg?q=75&fm=jpg&auto=format&s=37706eb444a95d18c639bd2973b304b4') no-repeat;*/
+}
+
+body, h1, p, h4, button, select {
+  font-family: 'Lora', serif;
+  opacity: 1;
 }
 
 
-body, h1, .sidebar, h4, button, selector {
-  font-family: 'Lora', serif;
+button {
+  opacity: .7;
 }
 
 h1 {
@@ -24,17 +33,16 @@ h1 {
   padding: 20px;
  }
 
-/* body {
-  background: url('https://unsplash.imgix.net/41/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3.jpg?q=75&fm=jpg&auto=format&s=37706eb444a95d18c639bd2973b304b4') no-repeat;*/
 
-.main_container {
-  background-color: #f1f1f1;
+  
+.route_form {
+  float: left;
 }
 
 
+.find_route {
+  margin:  10px;
+}
 
+ 
 
-/*
- .route_form {
-  float: left;
- }*/

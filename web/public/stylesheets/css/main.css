@@ -1,0 +1,50 @@
+.sidebar {
+  float: right;
+ margin-top: 26px;
+ background-color: #f8a579;
+ text-align: center;
+  /*background: url('') no-repeat;*/
+}
+
+body, h1, p, h4, button, select {
+  font-family: 'Lora', serif;
+  opacity: 1;
+}
+
+
+button {
+  opacity: .7;
+}
+
+h1 {
+  color: #FF5800;
+  font-size: 50px;
+}
+
+.header {
+  width: 100%;
+  background-color: #f1f1f1;
+ margin-bottom: 10px;
+}
+
+ .new {
+  float: right;
+  font-size: 25px;
+  padding: 20px;
+ }
+
+.error {
+  color: #f1f1f1;
+}
+  
+.route_form {
+  float: left;
+}
+
+
+.find_route {
+  margin:  10px;
+}
+
+ 
+

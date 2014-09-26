@@ -1,0 +1,104 @@
+<div class="row">
+	<div class="route_form large-8 columns">
+
+		
+			<fieldset>
+				<legend>Errands done efficiently</legend>
+
+				
+
+					<% if !defined?(start_dest) %>
+					<form action="/add-items" method="post">
+					<div class="row">
+					<div class="large-8 columns">
+
+						<div class="travel switch round large">
+						<input id="drive" name="travel_mode" type="radio" checked>
+							<label for="drive" onclick="">Travel by car</label>
+
+							<input id="walk" name="travel_mode" type="radio">
+							<label for="walk" onclick="">Travel by foot</label>
+							<span></span>
+							</div>
+						
+						<!-- <label for="travel_mode">Run errands by:
+							<select name="travel_mode">
+								<option value="drive">Car</option>
+								<option value="walk">Foot</option>
+							</select> -->
+						</div>
+					</div>
+					<div class="row">
+					 
+						<div class="start large-8 columns">
+							<label for="start_name">Start/end location 
+								<input name="start_name" type="text" id="start_name" class="error" >
+								<small class="error start_name" style="display:none">Please name your start and end location. Ex: "home".</small> 
+							</label>
+							<br /><label for="start_address">Address
+								<input name="start_address" id="start_address" type="text" class="error"> 
+								<small class="error start_address" style="display: none">Please enter a valid address.</small> 
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-8 columns">
+							<br /><button class="location small">Set start/end location</button>
+ 						</div>
+					</div>
+					</form>
+					<% else %>
+					<form action="/add-items" method="post">
+					<div class="row">
+						<div class="errand large-8 columns">
+							<label for="dest_name">Errand name
+								<input name="dest_name" id="dest_name" type="text" class="error"> 
+								<small class="error dest_name" style="display: none">Please name your errand. Ex: "Sunrise MiniMart".</small> 
+							</label>
+							<br /><label for="dest_address">Errand address
+								<input name="dest_address" id="dest_address" type="text" class="error"> 
+								<small class="error dest_address" style="display: none">Please enter a valid address.</small> 
+							</label>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-8 columns">
+							<br /><button class="add small">Add my errand!</button>
+						</div>
+					</div>
+				</form>
+					<%end %>
+				</div>
+
+			</fieldset>
+		
+
+		<div class="sidebar large-4 columns">
+			
+			<% if defined?(start_dest) %>
+			<h4>Start</h4>
+			<p><strong><%="#{start_dest.first.split(' ').map(&:capitalize).join(' ')}"%></strong><br />
+					<em><%= "#{start_dest.last.split(' ').map(&:capitalize).join(' ')}" %></em></p>
+			<% end %> 
+			<% if defined?(dests) && dests != []%>
+				<h4>To-dos</h4>
+				<% dests.each do |array|  %>
+				<p><strong><%= "#{array.first.split(' ').map(&:capitalize).join(' ')}"%></strong><br />
+					<em><%= "#{array.last.split(' ').map(&:capitalize).join(' ')}" %></em></p>
+						<% end %> 
+				<% end %>
+				<form action="/route" method="post">
+			<button class="find_route">Find my route!</button> 
+			</form>
+</div>
+
+
+</div>
+
+
+
+
+
+
+

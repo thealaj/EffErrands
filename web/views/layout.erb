@@ -1,11 +1,31 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>EffErrands</title>
+	<title>Eff Errands | Errands made efficient</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="/stylesheets/css/main.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/css/main.css">
+<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    
 </head>
 <body>
-	<h1>EffErrands</h1>
 
+<div class="header row">
+	<div class="large-6 columns">
+		<h1><em>Eff</em> Errands</h1>
+	</div>
+	<div class="large-6 columns">
+  			<a href="/" class="new">+ new route</a>	
+		</div>
+	</div>
+
+  	<%= yield %>
+  </div> 
+
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/logic/js/blank.js"></script>
 </body>
 </html>
+
+
+

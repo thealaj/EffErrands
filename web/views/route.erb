@@ -2,13 +2,13 @@
 
 <div class="row">
 	<div class="large-6 columns">
-		<h3>Efficient route</h3>
+		<h4>Get those errands done!</h4>
 		<ul>
 			<% regex = /^(.*)\s\d+,\s\w+$/%>
 			<% points.each do |k, v| %>
 				<% location = v.split(':')%>
 				<% new_loc = regex.match(location.first)[1] %>
-				<li><%= "#{k}. " + names[k-1].upcase + '- ' + new_loc %></li>
+				<li><%= "#{k}. " + names[k-1].split(' ').map(&:capitalize).join(' ') + '- ' + new_loc %></li>
 				<ul>
 					<li><em><%= location.last%></em> <%=" to next destination"%> </li>
 				</ul>
@@ -16,7 +16,7 @@
 
 		</ul>
 
-		<p> <%=  'End at ' + start_dest.first%> </p>
+		<p> <%=  'End at ' + start_dest.first.split(' ').map(&:capitalize).join(' ')%> </p>
 	</div>
 	<div class="large-6 columns">
 	</div>

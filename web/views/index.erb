@@ -59,17 +59,17 @@
 		
 
 		<div class="sidebar large-4 columns">
-			<h4>To-dos</h4>
+			
 			<% if defined?(start_dest) %>
+			<h4>Start</h4>
 			<p><strong><%="#{start_dest.first}"%></strong></p>
 			<% end %> 
 			<% if defined?(dests) && dests != []%>
-				<ol> 
+				<h4>To-dos</h4>
 				<% dests.each do |array|  %>
-				<li><%= "#{array.first}"%></li>
-					<li><em><%= "#{array.last}" %></em></li>
+				<p><strong><%= "#{array.first}"%><strong><br />
+					<em><%= "#{array.last}" %></em></p>
 						<% end %> 
-				</ol>
 				
 				<% end %>
 			<button class="find_route" a href="/drive-route">Find my route</button> 

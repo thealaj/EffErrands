@@ -13,7 +13,6 @@ class EffErrands::Server < Sinatra::Application
     #home page
     @@user_items = []
     @@start_location = []
-
     
     erb :index 
   end
@@ -24,24 +23,21 @@ class EffErrands::Server < Sinatra::Application
     @error = ''
 
     #check if start name or start address is empty and has not already been entered
-   if (params['start_name'].nil? || params['start_address'].nil?) && @@start_location == []
+    if (params['start_name'].nil? || params['start_address'].nil?) && @@start_location == []
      @error = 'Please add a starting location with name and address.'
 
-    #check if start name or start address is empty and has not already been entered
-    elsif params['dest_name'].nil? || params['dest_address'].nil?
-      @error = 'Please add a destination with name and address.'
+    elsif @@start_location == []
+      @@start_location = [params['start_name'], params['start_address']]
+    end
 
-    #if start location has not been changed and new destination has been added
-    elsif params['start_name'].nil? && params['start_address'].nil?
-      #add each item one at a time
+     
+    if !params['dest_name'].nil? && !params['dest_address'].nil?
       @@user_items << [params['dest_name'], params['dest_address']] 
 
-    #if start location has been updated and new destination has been added  
-    else
-      @@start_location = [params['start_name'], params['start_address']]
-      #add each item one at a time
-
+    elsif params['dest_name'] == '' || params['dest_address'] == ''
+      @error = 'Please add a destination with name and address.'
     end
+    
 
     start_dest = @@start_location
     dests = @@user_items

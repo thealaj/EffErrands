@@ -30,8 +30,8 @@
 					<div class="row">
 					 
 						<div class="start large-8 columns">
-							<label for="start_name error">Start/end location 
-								<input name="start_name" type="text">
+							<label for="start_name">Start/end location 
+								<input name="start_name" type="text" class="error" />
 								<small class="error">Invalid entry</small> 
 							</label>
 							<label for="start_address">Address
@@ -83,7 +83,9 @@
 					<em><%= "#{array.last}" %></em></p>
 						<% end %> 
 				<% end %>
-			<button class="find_route" a href="/route">Find my route!</button> 
+				<form action="/route" method="post">
+			<button class="find_route">Find my route!</button> 
+			</form>
 </div>
 
 

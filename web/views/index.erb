@@ -7,11 +7,21 @@
 
 				<div class="row">
 					<div class="large-8 columns">
-						<label for="travel_mode">Run errands by:
+
+						<div class="travel switch small">
+						<input id="drive" name="travel_mode" type="radio" checked>
+							<label for="drive" onclick="">Travel by car</label>
+
+							<input id="walk" name="travel_mode" type="radio">
+							<label for="walk" onclick="">Travel by foot</label>
+							<span></span>
+							</div>
+						
+						<!-- <label for="travel_mode">Run errands by:
 							<select name="travel_mode">
 								<option value="drive">Car</option>
 								<option value="walk">Foot</option>
-							</select>
+							</select> -->
 						</div>
 					</div>
 
@@ -72,7 +82,7 @@
 						<% end %> 
 				
 				<% end %>
-			<button class="find_route" a href="/drive-route">Find my route</button> 
+			<button class="find_route" a href="/route">Find my route!</button> 
 						
 
 					</div>

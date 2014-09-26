@@ -61,7 +61,7 @@ class EffErrands::Server < Sinatra::Application
     @@address[:destinations] = @@user_items.map {|x| x.last.gsub(/,/, '').gsub(/\s/, '+')}
     @@address[:destinations].push(@@start_location.last.gsub(/,/, '').gsub(/\s/, '+'))  
 
-    reditect '/api_request'
+    redirect '/api_request_waypoints'
   end
   #@@address = {:origins=>["1803+E+18th+Street+Austin+TX", "2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751"], :destinations=>["2300+W+Ben+White+Blvd+Austin+TX", "1000+E+41st+St+Austin+TX+78751", "1803+E+18th+Street+Austin+TX"]}
  
@@ -99,12 +99,6 @@ class EffErrands::Server < Sinatra::Application
       i += 1
     end
 
-    start_dest = @@start_location
-    dests = @@user_items
-    addresses = @@address  
-
-    erb :route, :locals => {start_dest: start_dest, dests: dests, addresses: addresses}
-
   end
 
   #USING GOOGLE'S SHITTY ALGORITHM:
@@ -130,7 +124,11 @@ class EffErrands::Server < Sinatra::Application
       points_hash[i+1] = each_stop[i]
     end
 
+    start_dest = @@start_location
+    dests = @@user_items
+    addresses = @@address  
 
+    erb :route, :locals => {start_dest: start_dest, dests: dests, addresses: addresses, points: points_hash}
 
   end
 

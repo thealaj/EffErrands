@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="route_form large-8 columns">
 
-		<form action="/add-items" method="post">
+		
 			<fieldset>
 				<legend>Errands done efficiently</legend>
 
@@ -9,13 +9,14 @@
 					<div class="large-8 columns">
 						<label for="travel_mode">Run errands by:
 							<select name="travel_mode">
-								<option value="true">Car</option>
-								<option value="false">Foot</option>
+								<option value="drive">Car</option>
+								<option value="walk">Foot</option>
 							</select>
 						</div>
 					</div>
 
 					<% if !defined?(start_dest) %>
+					<form action="/add-items" method="post">
 					<div class="row">
 						<div class="start large-8 columns">
 							<label for="start_name">Start/end location 
@@ -28,11 +29,12 @@
 					</div>
 					<div class="row">
 						<div class="large-8 columns">
-						<input type="submit">
-<!-- 							<button class="location small">Set start/end location</button>
- -->						</div>
+							<button class="location small">Set start/end location</button>
+ 						</div>
 					</div>
+					</form>
 					<% else %>
+					<form action="/add-items" method="post">
 					<div class="row">
 						<div class="errand large-8 columns">
 							<label for="dest_name">Errand name
@@ -49,28 +51,28 @@
 							<button class="add small">Add my errand!</button>
 						</div>
 					</div>
+				</form>
 					<%end %>
 				</div>
 
 			</fieldset>
-		</form>
+		
 
 		<div class="sidebar large-4 columns">
 			<h4>To-dos</h4>
 			<% if defined?(start_dest) %>
-			<p>Test<strong><%="#{start_dest.first}"%></strong></p>
-			<button class="find_route" a href="/drive-route">Find my route</button> 
+			<p><strong><%="#{start_dest.first}"%></strong></p>
 			<% end %> 
 			<% if defined?(dests) && dests != []%>
-			<p>test 2</p>
-				<ul> 
+				<ol> 
 				<% dests.each do |array|  %>
 				<li><%= "#{array.first}"%></li>
 					<li><em><%= "#{array.last}" %></em></li>
 						<% end %> 
-				</ul>
+				</ol>
 				
 				<% end %>
+			<button class="find_route" a href="/drive-route">Find my route</button> 
 						
 
 					</div>

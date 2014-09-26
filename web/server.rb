@@ -127,11 +127,21 @@ class EffErrands::Server < Sinatra::Application
       points_hash[i + 1] = each_stop[i]
     end
 
+    index_order = data['routes'].first['waypoint_order']
     start_dest = @@start_location
     dests = @@user_items
     addresses = @@address  
+    names = []
 
-    erb :route, :locals => {start_dest: start_dest, dests: dests, addresses: addresses, points: points_hash}
+    i =0
+    while i < dests.length do
+      names << dests[index_order[i]].first
+      i +=1
+    end
+
+    names.unshift(start_dest.first)
+
+    erb :route, :locals => {start_dest: start_dest, points: points_hash, names: names}
 
   end
 

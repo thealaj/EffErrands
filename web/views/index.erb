@@ -1,73 +1,83 @@
 <div class="row">
-	<div class="sidebar large-4 columns">
-		<p>Helvetica fixie post-ironic semiotics, Pinterest cred Vice hella quinoa Shoreditch High Life kitsch wolf tofu Tonx. Kogi Godard biodiesel, 3 wolf moon cardigan typewriter Brooklyn ennui chillwave forage jean shorts hoodie fap XOXO. Quinoa tousled plaid, kogi cornhole ennui Wes Anderson chia typewriter. Cosby sweater kogi heirloom, messenger bag Brooklyn organic XOXO gentrify Marfa wolf Etsy vinyl Williamsburg. Literally chambray ugh raw denim banjo fixie. Craft beer Cosby sweater jean shorts, literally meggings butcher PBR readymade gentrify fanny pack mumblecore. 
-		</p>
-		<button class="find_route" a href="/route">Find my efficient route</button>  
-	</div>
 	<div class="route_form large-8 columns">
+
 		<form action="/add-items" method="post">
-		<fieldset>
-		<legend>Find my route</legend>
+			<fieldset>
+				<legend>Errands done efficiently</legend>
 
-<div class="row">
-	<div class="large-4 columns">
-	<label for="travel_mode">Run errands by:
-	<select name="travel_mode">
-	<option value="true">Car</option>
-	<option value="false">Foot</option>
-	</select>
-</div>
-</div>
+				<div class="row">
+					<div class="large-8 columns">
+						<label for="travel_mode">Run errands by:
+							<select name="travel_mode">
+								<option value="true">Car</option>
+								<option value="false">Foot</option>
+							</select>
+						</div>
+					</div>
 
-<div class="row">
-	<div class="large-4 columns">
-		<label for="start_name">Start location 
-		<input name="start_name" type="text"> 
-		</label>
-		<label for="start_address">Start address
-		<input name="start_address" type="text"> 
-		</label>
-</div>
-<div class="row">
-	<div class="large-4 columns">
-		<label for="dest_name">Errand name
-		<input name="dest_name" type="text"> 
-		</label>
-		<label for="dest_address">Errand address
-		<input name="dest_address" type="text"> 
-		</label>
-	</div>
-</div>
+					<% if !defined?(start_dest) %>
+					<div class="row">
+						<div class="start large-8 columns">
+							<label for="start_name">Start/end location 
+								<input name="start_name" type="text"> 
+							</label>
+							<label for="start_address">Address
+								<input name="start_address" type="text"> 
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-8 columns">
+						<input type="submit">
+<!-- 							<button class="location small">Set start/end location</button>
+ -->						</div>
+					</div>
+					<% else %>
+					<div class="row">
+						<div class="errand large-8 columns">
+							<label for="dest_name">Errand name
+								<input name="dest_name" type="text"> 
+							</label>
+							<label for="dest_address">Errand address
+								<input name="dest_address" type="text"> 
+							</label>
 
-<div class="row">
-	<div class="end_loc large-8 columns">
-	<input id="end_home" type="checkbox"><label for="end_home">End at starting location</label>
-	
-	<!-- <button class="button tiny">Set an end destination</button> -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-8 columns">
+							<button class="add small">Add my errand!</button>
+						</div>
+					</div>
+					<%end %>
+				</div>
 
-<!-- 		<div id="end_collapse" style="display:none">
- -->		<label for='end_name'>End name
-		<input name='end_name' type='text'>
-		</label>
-		<label for='end_location'>End location
-		<input name='end_location' type='text'>
-		</label>
-<!-- 		</div>
- -->    </div>
-</div>
-	
-<div class="row">
-	<div class="large-8 columns">
-		<button class="add small">Add my errand!</button>
-	</fieldset>
+			</fieldset>
 		</form>
-	</div>
-</div>
+
+		<div class="sidebar large-4 columns">
+			<h4>To-dos</h4>
+			<% if defined?(start_dest) %>
+			<p>Test<strong><%="#{start_dest.first}"%></strong></p>
+			<button class="find_route" a href="/drive-route">Find my route</button> 
+			<% end %> 
+			<% if defined?(dests) && dests != []%>
+			<p>test 2</p>
+				<ul> 
+				<% dests.each do |array|  %>
+				<li><%= "#{array.first}"%></li>
+					<li><em><%= "#{array.last}" %></em></li>
+						<% end %> 
+				</ul>
+				
+				<% end %>
+						
+
+					</div>
 
 
 
-
-</div>
+				</div>
 
 
 

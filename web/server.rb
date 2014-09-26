@@ -13,7 +13,9 @@ class EffErrands::Server < Sinatra::Application
     #home page
     @@user_items = []
     @@start_location = []
-    erb :index
+
+    
+    erb :index 
   end
 
   #for index, use this
@@ -22,10 +24,10 @@ class EffErrands::Server < Sinatra::Application
     @error = ''
 
     #check if start name or start address is empty and has not already been entered
-    if (params['start_name'].nil? || params['start_address'].nil?) && @@start_location == []
-      @error = 'Please add a starting location with name and address.'
+   if (params['start_name'].nil? || params['start_address'].nil?) && @@start_location == []
+     @error = 'Please add a starting location with name and address.'
 
-    #check if either dest name or address is nil
+    #check if start name or start address is empty and has not already been entered
     elsif params['dest_name'].nil? || params['dest_address'].nil?
       @error = 'Please add a destination with name and address.'
 
@@ -38,11 +40,12 @@ class EffErrands::Server < Sinatra::Application
     else
       @@start_location = [params['start_name'], params['start_address']]
       #add each item one at a time
-      @@user_items << [params['dest_name'], params['dest_address']] 
+
     end
 
     start_dest = @@start_location
     dests = @@user_items
+    binding.pry
 
     erb :index, :locals => {start_dest: start_dest, dests: dests}
   end

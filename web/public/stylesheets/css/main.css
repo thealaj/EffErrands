@@ -1,8 +1,7 @@
-.sidebar {
-  float: right;
-  background-color: #f1f1f1;
+/*.sidebar {
+  background-color: purple;
 }
-
+*/
 h1 {
   color: #FF5800;
   font-size: 50px;
@@ -11,8 +10,8 @@ h1 {
 .header {
   width: 100%;
   background-color: #f1f1f1;
-  margin: 10px;
-}
+/*  margin: 10px;
+*/}
 
  .new {
   float: right;
@@ -27,14 +26,10 @@ h1 {
   background-color: #f1f1f1;
 }
 
-.switch {
-  color: blue;
-}
 
- .add {
-  float: right;
- }
 
+
+/*
  .route_form {
-  float: right;
- }
+  float: left;
+ }*/

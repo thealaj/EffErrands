@@ -28,9 +28,9 @@ h1 {
 }
 
  .new {
-  float: right;
+  float: left;
   font-size: 25px;
-  padding: 20px;
+  padding: 22px;
  }
 
 .error {

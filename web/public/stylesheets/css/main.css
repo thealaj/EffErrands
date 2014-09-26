@@ -1,7 +1,7 @@
 .sidebar {
   float: right;
  margin-top: 26px;
- background-color:  rgba(255, 88, 0, 0.15);
+ background-color: #f8a579;
  text-align: center;
   /*background: url('') no-repeat;*/
 }
@@ -33,7 +33,9 @@ h1 {
   padding: 20px;
  }
 
-
+.error {
+  color: #f1f1f1;
+}
   
 .route_form {
   float: left;

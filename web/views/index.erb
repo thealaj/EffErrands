@@ -5,7 +5,11 @@
 			<fieldset>
 				<legend>Errands done efficiently</legend>
 
-				<div class="row">
+				
+
+					<% if !defined?(start_dest) %>
+					<form action="/add-items" method="post">
+					<div class="row">
 					<div class="large-8 columns">
 
 						<div class="travel switch round large">
@@ -24,9 +28,6 @@
 							</select> -->
 						</div>
 					</div>
-
-					<% if !defined?(start_dest) %>
-					<form action="/add-items" method="post">
 					<div class="row">
 					 
 						<div class="start large-8 columns">
@@ -34,7 +35,7 @@
 								<input name="start_name" type="text" id="start_name" class="error" >
 								<small class="error start_name" style="display:none">Please name your start and end location. Ex: "home".</small> 
 							</label>
-							<label for="start_address">Address
+							<br /><label for="start_address">Address
 								<input name="start_address" id="start_address" type="text" class="error"> 
 								<small class="error start_address" style="display: none">Please enter a valid address.</small> 
 							</label>
@@ -42,7 +43,7 @@
 					</div>
 					<div class="row">
 						<div class="large-8 columns">
-							<button class="location small">Set start/end location</button>
+							<br /><button class="location small">Set start/end location</button>
  						</div>
 					</div>
 					</form>
@@ -54,7 +55,7 @@
 								<input name="dest_name" id="dest_name" type="text" class="error"> 
 								<small class="error dest_name" style="display: none">Please name your errand. Ex: "Sunrise MiniMart".</small> 
 							</label>
-							<label for="dest_address">Errand address
+							<br /><label for="dest_address">Errand address
 								<input name="dest_address" id="dest_address" type="text" class="error"> 
 								<small class="error dest_address" style="display: none">Please enter a valid address.</small> 
 							</label>
@@ -63,7 +64,7 @@
 					</div>
 					<div class="row">
 						<div class="large-8 columns">
-							<button class="add small">Add my errand!</button>
+							<br /><button class="add small">Add my errand!</button>
 						</div>
 					</div>
 				</form>
@@ -77,13 +78,14 @@
 			
 			<% if defined?(start_dest) %>
 			<h4>Start</h4>
-			<p><strong><%="#{start_dest.first}"%></strong></p>
+			<p><strong><%="#{start_dest.first.split(' ').map(&:capitalize).join(' ')}"%></strong><br />
+					<em><%= "#{start_dest.last.split(' ').map(&:capitalize).join(' ')}" %></em></p>
 			<% end %> 
 			<% if defined?(dests) && dests != []%>
 				<h4>To-dos</h4>
 				<% dests.each do |array|  %>
-				<p><strong><%= "#{array.first}"%><strong><br />
-					<em><%= "#{array.last}" %></em></p>
+				<p><strong><%= "#{array.first.split(' ').map(&:capitalize).join(' ')}"%></strong><br />
+					<em><%= "#{array.last.split(' ').map(&:capitalize).join(' ')}" %></em></p>
 						<% end %> 
 				<% end %>
 				<form action="/route" method="post">
@@ -92,8 +94,7 @@
 </div>
 
 
-
-				</div>
+</div>
 
 
 

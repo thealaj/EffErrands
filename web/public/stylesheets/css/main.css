@@ -1,7 +1,7 @@
-.sidebar {
-  background-color: #f1f1f1;
+/*.sidebar {
+  background-color: purple;
 }
-
+*/
 h1 {
   color: #FF5800;
   font-size: 50px;
@@ -10,8 +10,8 @@ h1 {
 .header {
   width: 100%;
   background-color: #f1f1f1;
-  margin: 10px;
-}
+/*  margin: 10px;
+*/}
 
  .new {
   float: right;
